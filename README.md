@@ -61,7 +61,7 @@ Screenshot of an example execution/results screen:
 
 ![Execution Results - Results](multi_agents/Results.png)
 
-![Execution Results - Results](multi_agents/UI.png)
+![Execution Results - UI](multi_agents/UI%20.png)
 
 ## Web demo & Metrics
 
