@@ -61,6 +61,8 @@ Screenshot of an example execution/results screen:
 
 ![Execution Results - Results](multi_agents/Results.png)
 
+![Execution Results - Results](multi_agents/UI.png)
+
 ## Web demo & Metrics
 
 - A FastAPI demo (`web/app.py`) exposes:
