@@ -59,5 +59,22 @@ Created and maintained in this repository. For usage questions, open an issue.
 
 Screenshot of an example execution/results screen:
 
-![Execution Results](multi_agents/UI%20.png)
+![Execution Results - UI](multi_agents/UI%20.png)
+
+## Web demo & Metrics
+
+- A FastAPI demo (`web/app.py`) exposes:
+	- `/` — simple UI to query weather and time.
+	- `/api/weather` — POST endpoint (form) returning JSON from `get_weather`.
+	- `/api/time` — POST endpoint (form) returning JSON from `get_current_time`.
+	- `/metrics` — Prometheus metrics (request counts and latency).
+
+Run locally:
+
+```bash
+pip install -r requirements.txt
+& "D:/ML/Agentic AI/Gemini/.venv/Scripts/python.exe" -m uvicorn web.app:app --host 127.0.0.1 --port 8000 --reload
+```
+
+Open `http://127.0.0.1:8000` to try the demo and `http://127.0.0.1:8000/metrics` to view metrics.
 
