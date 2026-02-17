@@ -59,7 +59,7 @@ Created and maintained in this repository. For usage questions, open an issue.
 
 Screenshot of an example execution/results screen:
 
-![Execution Results - UI](multi_agents/UI%20.png)
+![Execution Results - Results](multi_agents/Results.png)
 
 ## Web demo & Metrics
 
