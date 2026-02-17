@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Gemini Multi-Agent Demo</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 2rem; }
+      input, button { padding: 0.5rem; font-size: 1rem; }
+      .box { border: 1px solid #ddd; padding: 1rem; margin-top: 1rem; }
+      pre { background:#f7f7f7; padding:1rem; }
+    </style>
+  </head>
+  <body>
+    <h1>Gemini Multi-Agent — Weather & Time</h1>
+    <p>Enter a city name and choose an action. Metrics available at <a href="/metrics">/metrics</a>.</p>
+
+    <div class="box">
+      <form id="weatherForm">
+        <label>City: <input id="city" name="city" value="New York"></label>
+        <label>Units:
+          <select id="units" name="units">
+            <option value="C">C</option>
+            <option value="F">F</option>
+          </select>
+        </label>
+        <button type="submit">Get Weather</button>
+      </form>
+      <div id="weatherResult"></div>
+    </div>
+
+    <div class="box">
+      <form id="timeForm">
+        <label>City: <input id="timeCity" name="city" value="Tokyo"></label>
+        <button type="submit">Get Time</button>
+      </form>
+      <div id="timeResult"></div>
+    </div>
+
+    <script>
+      async function postForm(url, form) {
+        const formData = new FormData(form);
+        const res = await fetch(url, { method: 'POST', body: formData });
+        return res.json();
+      }
+
+      document.getElementById('weatherForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const out = document.getElementById('weatherResult');
+        out.textContent = 'Loading...';
+        const data = await postForm('/api/weather', e.target);
+        out.innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+      });
+
+      document.getElementById('timeForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const out = document.getElementById('timeResult');
+        out.textContent = 'Loading...';
+        const data = await postForm('/api/time', e.target);
+        out.innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+      });
+    </script>
+  </body>
+</html>
